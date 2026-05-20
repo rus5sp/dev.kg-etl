@@ -26,7 +26,7 @@ def sort_by_date(df: pd.DataFrame) -> pd.DataFrame:
     return df.sort_values('date', ascending=False).reset_index(drop=True)
 
 
-def run_transform(vacancies: list[dict]) -> pd.DataFrame:
+def run_transform(vacancies: list[Vacancy]) -> pd.DataFrame:
     df = pd.DataFrame(vacancies)
     df = remove_duplicates(df)
     df = remove_nan_values(df)
