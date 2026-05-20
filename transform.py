@@ -8,10 +8,6 @@ from models import Vacancy
 logger = logging.getLogger(__name__)
 
 
-def convert_to_dataframe(vacancies: list[Vacancy]) -> pd.DataFrame:
-    return pd.DataFrame(vacancies)
-
-
 def remove_duplicates(df: pd.DataFrame) -> pd.DataFrame:
     if df['id'].duplicated().any():
         logger.warning('Found %d duplicate vacancies based on id', df['id'].duplicated().sum())
@@ -31,7 +27,7 @@ def sort_by_date(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def run_transform(vacancies: list[dict]) -> pd.DataFrame:
-    df = convert_to_dataframe(vacancies)
+    df = pd.DataFrame(vacancies)
     df = remove_duplicates(df)
     df = remove_nan_values(df)
     df = sort_by_date(df)
