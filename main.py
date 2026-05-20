@@ -4,7 +4,7 @@ import logging
 from extract import run_extract
 from models import Vacancy
 from transform import run_transform
-from load import run_load
+from load import load_to_sqlite
 
 
 PAGES = 100
@@ -26,7 +26,7 @@ async def main() -> None:
     df = run_transform(parsed_vacancies)
     logger.info('Transformed vacancies into DataFrame with %d rows', len(df))
 
-    run_load(df)
+    load_to_sqlite(df)
     logger.info('ETL pipeline completed successfully')
  
 
