@@ -36,7 +36,7 @@ class Vacancy:
         )
  
  
-def _parse_date(value: str) -> date:
+def parse_date(value: str) -> date:
     return datetime.fromisoformat(value.replace('Z', '+00:00')).date()
 
 
