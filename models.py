@@ -23,7 +23,7 @@ class Vacancy:
         """Construct a Vacancy from a raw API dict."""
         return cls(
             id=data['id'],
-            date=_parse_date(data['created_at']),
+            date=parse_date(data['created_at']),
             position=data['position'],
             organization=data['organization_name'],
             type=data['type'],
